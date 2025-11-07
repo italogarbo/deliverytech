@@ -84,7 +84,7 @@ public class ClienteServiceImpl implements ClienteService {
     @Transactional(readOnly = true)
     public List<Cliente> listarAtivos() {
         log.debug("Listando clientes ativos");
-        return clienteRepository.findByActivoTrue();
+        return clienteRepository.findByAtivoTrue();
     }
 
     /**
@@ -94,7 +94,7 @@ public class ClienteServiceImpl implements ClienteService {
     @Transactional(readOnly = true)
     public List<Cliente> buscarPorNome(String nome) {
         log.debug("Buscando clientes por nome: {}", nome);
-        return clienteRepository.findByNombreContainingIgnoreCase(nome);
+        return clienteRepository.findByNomeContainingIgnoreCase(nome);
     }
 
     /**

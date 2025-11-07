@@ -1,0 +1,22 @@
+=== ENTREGA - TESTE DE ENDPOINT ===
+Data/Hora: 07/11/2025 19:02:08
+Método: POST
+URL Completa: http://localhost:8080/api/auth/register
+Status HTTP: 201
+Content-Type: application/json
+
+=== DADOS ENVIADOS ===
+{
+  "nome" : "Italo Costa",
+  "email" : "italo.garbo@gmail.com",
+  "senha" : "123852987",
+  "role" : "ADMIN"
+}
+
+=== RESPOSTA REAL ===
+{
+  "message" : "Usuário cadastrado com sucesso!",
+  "email" : null,
+  "nome" : null,
+  "role" : null
+}

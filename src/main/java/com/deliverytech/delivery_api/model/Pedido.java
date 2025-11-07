@@ -1,11 +1,11 @@
 package com.deliverytech.delivery_api.model;
 
-
 import jakarta.persistence.*;
 import lombok.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
+
 
 @Entity
 @Data
@@ -26,21 +26,23 @@ public class Pedido {
     @JoinColumn(name = "restaurante_id")
     private Restaurante restaurante;
 
+    // Mudança 16/07
     private BigDecimal valorTotal;
     private String numeroPedido;
     private BigDecimal subtotal;
     private String observacoes;
- 
+
+
     @Enumerated(EnumType.STRING)
-    private StatusPedido status;
+    private StatusPedido statusPedido;
 
     @Builder.Default
     private LocalDateTime dataPedido = LocalDateTime.now();
 
-    @ManyToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
     private List<ItemPedido> itens;
 
     @Embedded
     private Endereco enderecoEntrega;
-
+    
 }

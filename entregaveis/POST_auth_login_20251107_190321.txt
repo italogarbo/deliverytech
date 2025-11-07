@@ -1,0 +1,17 @@
+=== ENTREGA - TESTE DE ENDPOINT ===
+Data/Hora: 07/11/2025 19:03:21
+Método: POST
+URL Completa: http://localhost:8080/api/auth/login
+Status HTTP: 200
+Content-Type: application/json
+
+=== DADOS ENVIADOS ===
+{
+  "username" : "italo.garbo@gmail.com",
+  "password" : "123852987"
+}
+
+=== RESPOSTA REAL ===
+{
+  "token" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpdGFsby5nYXJib0BnbWFpbC5jb20iLCJpYXQiOjE3NjI1NTMwMDEsImV4cCI6MTc2MjYzOTQwMX0.PNEVsWjpHRvaIAEeNd6JRNotP-770VE-FqzLVwZ35ko"
+}

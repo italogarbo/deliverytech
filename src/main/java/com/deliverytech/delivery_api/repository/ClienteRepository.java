@@ -16,10 +16,10 @@ public interface ClienteRepository extends JpaRepository <Cliente, Long> {
     boolean existsByEmail(String email);
     // SELECT COUNT(*) FROM cliente WHERE e-mail = ?
 
-    List<Cliente> findByActivoTrue();
+    List<Cliente> findByAtivoTrue();
     // SELECT * FROM cliente WHERE activo = true
     
-    List<Cliente> findByNombreContainingIgnoreCase(String nome);
+    List<Cliente> findByNomeContainingIgnoreCase(String nome);
     // SELECT * FROM cliente WHERE lower(nome) LIKE lower('%...%');
 
     @Query(value =  "SELEC c.nome, COUNT(p.id) as total_pedidos " +
@@ -31,6 +31,5 @@ public interface ClienteRepository extends JpaRepository <Cliente, Long> {
         
                     List<Object[]> findTop10ClientesByTotalPedidos();
 
-    
 
 }

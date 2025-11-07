@@ -55,7 +55,7 @@ public class PedidoController {
         Pedido pedido = Pedido.builder()
                 .cliente(cliente)
                 .restaurante(restaurante)
-                .status(StatusPedido.CRIADO)
+                .statusPedido(StatusPedido.CRIADO)
                 .valorTotal(BigDecimal.ZERO) // Inicia com valor zero
                 .enderecoEntrega(request.getEnderecoEntrega())
                 .build();
@@ -68,7 +68,7 @@ public class PedidoController {
                 restaurante.getId(),
                 salvo.getEnderecoEntrega(),
                 salvo.getValorTotal(),
-                salvo.getStatus(),
+                salvo.getStatusPedido(),
                 salvo.getDataPedido(),
                 List.of()
         ));
@@ -94,7 +94,7 @@ public class PedidoController {
                 pedido.getRestaurante().getId(),
                 pedido.getEnderecoEntrega(),
                 pedido.getValorTotal(),
-                pedido.getStatus(),
+                pedido.getStatusPedido(),
                 pedido.getDataPedido(),
                 itensResp
         ));
@@ -112,7 +112,7 @@ public class PedidoController {
                         pedido.getRestaurante().getId(),
                         pedido.getEnderecoEntrega(),
                         pedido.getValorTotal(),
-                        pedido.getStatus(),
+                        pedido.getStatusPedido(),
                         pedido.getDataPedido(),
                         pedido.getItens() != null ? pedido.getItens().stream()
                                 .map(i -> new ItemPedidoResponse(i.getProduto().getId(), i.getProduto().getNome(), i.getQuantidade(), i.getPrecoUnitario()))
@@ -148,7 +148,7 @@ public class PedidoController {
                 pedidoAtualizado.getRestaurante().getId(),
                 pedidoAtualizado.getEnderecoEntrega(),
                 pedidoAtualizado.getValorTotal(),
-                pedidoAtualizado.getStatus(),
+                pedidoAtualizado.getStatusPedido(),
                 pedidoAtualizado.getDataPedido(),
                 itensResp
         ));
@@ -163,7 +163,7 @@ public class PedidoController {
             throw new RuntimeException("Pedido não encontrado");
         }
         
-        if (pedido.getStatus() != StatusPedido.CRIADO) {
+        if (pedido.getStatusPedido() != StatusPedido.CRIADO) {
             throw new RuntimeException("Pedido já foi confirmado ou cancelado");
         }
 
@@ -183,7 +183,7 @@ public class PedidoController {
                 pedidoConfirmado.getRestaurante().getId(),
                 pedidoConfirmado.getEnderecoEntrega(),
                 pedidoConfirmado.getValorTotal(),
-                pedidoConfirmado.getStatus(),
+                pedidoConfirmado.getStatusPedido(),
                 pedidoConfirmado.getDataPedido(),
                 itensResp
         ));
@@ -204,7 +204,7 @@ public class PedidoController {
                 pedidoCancelado.getRestaurante().getId(),
                 pedidoCancelado.getEnderecoEntrega(),
                 pedidoCancelado.getValorTotal(),
-                pedidoCancelado.getStatus(), // ✅ Agora será CANCELADO
+                pedidoCancelado.getStatusPedido(), // ✅ Agora será CANCELADO
                 pedidoCancelado.getDataPedido(),
                 List.of() // ou mapear os itens se necessário
         ));
@@ -279,7 +279,7 @@ public class PedidoController {
                 throw new RuntimeException("Pedido não encontrado");
             }
             
-            validarTransicaoStatus(pedido.getStatus(), status);
+            validarTransicaoStatus(pedido.getStatusPedido(), status);
             // FIM DA ADIÇÃO
             
             // Atualizar status
